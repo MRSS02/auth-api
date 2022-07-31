@@ -1,5 +1,16 @@
-import { MongoClient } from 'mongodb';
+import mongoose, { Schema } from 'mongoose';
 import 'dotenv/config';
 
-const uri:string = process.env.DBURL || "mongodb://localhost:3000";
-export const client = new MongoClient(uri)
+const uri:string = process.env.DBURI || "mongodb://localhost:27017/myapp";
+mongoose.connect(uri);
+const Connection = mongoose.connection;  
+
+const UserSchema = new Schema({
+  name: String,
+  password: String,
+  agge: Number,
+  createdAt: Date,
+  
+})
+
+export const UserModel = Connection.model('user', UserSchema);

@@ -1,27 +1,22 @@
 import { Request, Response } from 'express';
-import mongo from 'mongodb';
-import { client } from '../dbconfig';
-import { User } from '../types'
+import { User } from '../User';
+
 
 export async function Register(req: Request, res: Response) {
+   if (!req.body.name || !req.body.password) {
    try {
-      await client.connect();
-      const database = await client.db(process.env.dbname);
-      const user: User = { 
-        name: req.body.user,
-        password: req.body.password,
-        id: new mongo.ObjectID().toString(),
-      };
-
-      console.log(user);
-      await database.collection("users").insertOne(user);
-      
+      const NewUser = new User(req.body.name, req.body.password, req.body.age);
+      User.create();
       res.status(200);
       res.send("Register sucessful");
    } catch {
       res.status(500);
       res.send("Connection Error");
 
+   }
+   } else {
+     res.status(400);
+     res.send("Invalid request body.");
    }
    
 };
