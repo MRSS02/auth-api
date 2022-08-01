@@ -7,7 +7,6 @@ export class User {
   private createdAt: number;
   private id: string | undefined;
 
-
   constructor(name: string, password: string, age?: string) {
     this.name = name;
     this.password = password;
@@ -15,7 +14,7 @@ export class User {
     this.createdAt = Date.now();
   }
 
-  public create(): boolean {
+  create(): boolean {
     try {
     const CreatedUser = new UserModel({name: this.name, password: this.password, 
     age: this.age, createdAt: this.createdAt});

@@ -6,7 +6,7 @@ export async function Register(req: Request, res: Response) {
    if (!req.body.name || !req.body.password) {
    try {
       const NewUser = new User(req.body.name, req.body.password, req.body.age);
-      User.create();
+      NewUser.create();
       res.status(200);
       res.send("Register sucessful");
    } catch {
