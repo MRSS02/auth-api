@@ -16,9 +16,10 @@ export class User {
 
   create(): boolean {
     try {
-    const CreatedUser = new UserModel({name: this.name, password: this.password, 
-    age: this.age, createdAt: this.createdAt});
-    this.id = CreatedUser.id;
+      const CreatedUser = new UserModel({name: this.name, password: this.password, 
+      age: this.age, createdAt: this.createdAt});
+      this.id = CreatedUser.id;
+      CreatedUser.save();
       return true;
     } catch {
       return false;

@@ -4,11 +4,11 @@ import { User } from '../User';
 
 //todo: actual authentication
 export async function Login(req: Request, res: Response) {
-  if (!req.body.name || !req.body.password) {
+  if (req.body.name && req.body.password) {
   const token = undefined;  
   try {
     if (!token) {
-      const foundUser = UserModel.findOne({ name: req.body.name })
+      const foundUser = await UserModel.findOne({ name: req.body.name })
       console.log(foundUser);
       if (foundUser) {
         if (foundUser.password == req.body.password) {
