@@ -17,11 +17,11 @@ export async function Register(req: Request, res: Response) {
           } else {
             NewUser.create();
             res.status(201);
-            res.send("Register sucessful");
+            res.send("Register sucessful.");
           }
         } catch {
           res.status(500);
-          res.send("Connection Error");
+          res.send("Internal Server Error.");
         }
      } else {
        res.status(405);
@@ -30,7 +30,6 @@ export async function Register(req: Request, res: Response) {
    } else {
      res.status(400);
      res.send("Invalid request body.");
-   
    }
    
 };

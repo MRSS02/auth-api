@@ -1,7 +1,6 @@
 import express, { Express, Request, Response } from 'express';
 import 'dotenv/config';
 import { Router } from './Routes/Router';
-import { Authorization } from './middleware/cookieJwtAuth';
 import cookieParser from 'cookie-parser';
 
 const app: Express = express();

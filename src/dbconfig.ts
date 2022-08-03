@@ -8,7 +8,7 @@ const Connection = mongoose.connection;
 const UserSchema = new Schema({
   name: String,
   password: String,
-  agge: Number,
+  age: Number,
   createdAt: Date,
   
 })

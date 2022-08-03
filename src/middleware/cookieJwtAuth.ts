@@ -8,19 +8,18 @@ interface JwtPayload {
 }
 
 export const Authorization = (req: Request, res: Response, next: NextFunction) => {
-  const token = req.cookies.access_token;
+  const token = req.cookies.token;
   if (!token) {
-    res.status(403);
-    res.send("Unauthorized");
+    res.status(401);
+    res.send("Unauthorized.");
   }
   try {
-    const data = jwt.verify(token, secret) as JwtPayload;
-    console.log(data)
-    req.body.userId = data.id;
+    const user = jwt.verify(token, secret) as JwtPayload;
+    req.body.user = user;
     return next();
   } catch {
-    res.status(403);
-    res.send("Unauthorized");
+    res.status(401);
+    res.send("Unauthorized.");
 
   }
 };

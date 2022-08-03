@@ -1,4 +1,4 @@
-import { Request, Response, NextFunction } from 'express';
+import { Request, Response } from 'express';
 import 'dotenv/config';
 import { UserModel } from '../dbconfig';
 import { User } from '../User';
@@ -22,7 +22,7 @@ export async function Login(req: Request, res: Response) {
               httpOnly: true,
             })
             res.status(200);
-            res.send("Successfully logged in");
+            res.send(`Successfully logged in.`);
           } else {
             res.status(401);
             res.send("Invalid Password");
@@ -36,9 +36,8 @@ export async function Login(req: Request, res: Response) {
         res.send("Already logged in!");
       }
     } catch (e) {
-      console.log(e);
       res.status(500);
-      res.send("Connection Error");
+      res.send("Internal Server Error");
     }
   } else {
     res.status(400);
