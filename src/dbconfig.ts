@@ -1,6 +1,8 @@
 import mongoose, { Schema } from 'mongoose';
 import 'dotenv/config';
 
+export const secret = process.env.JWT_SECRET || "";
+
 const uri:string = process.env.DBURI || "mongodb://localhost:27017/myapp";
 mongoose.connect(uri);
 const Connection = mongoose.connection;  

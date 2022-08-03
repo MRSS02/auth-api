@@ -19,7 +19,8 @@ export async function Register(req: Request, res: Response) {
             res.status(201);
             res.send("Register sucessful.");
           }
-        } catch {
+        } catch(e) {
+          console.log(e);
           res.status(500);
           res.send("Internal Server Error.");
         }

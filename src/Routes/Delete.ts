@@ -6,9 +6,9 @@ export async function Delete(req: Request, res: Response) {
     await UserModel.deleteOne({name: req.body.user.name});
     res.clearCookie("token");
     res.status(200);
-    res.send("Sucessfully deleted user");
+    res.send("Sucessfully deleted user.");
   } catch {
     res.status(500);
-    res.send("Internal Server Error");
+    res.send("Internal Server Error.");
   }
 }
